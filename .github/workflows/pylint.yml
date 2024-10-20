@@ -1,0 +1,35 @@
+name: Run Pylint on push
+
+on:
+  push:
+    branches:
+      - main
+      - '**'  # This ensures the workflow runs on any branch push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Altere para a versão do Python que seu projeto usa
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pylint  # Adiciona o pylint
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run Pylint
+        run: |
+          pylint main.py
+
+      - name: Pylint Report
+        if: failure()
+        run: |
+          echo "Pylint found issues with the code"
