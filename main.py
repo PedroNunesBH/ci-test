@@ -7,6 +7,6 @@ def add(a: float, b: float) -> float:
     return result
 
 
-
-result_add = add(10.0, 5.0)
-print(result_add)
+if __name__ == "__main__":
+    result_add = add(10.0, 5.0)
+    print(result_add)
