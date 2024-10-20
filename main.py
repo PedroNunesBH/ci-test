@@ -1,3 +1,7 @@
+"""
+Module to add function
+"""
+
 def add(a: float, b: float) -> float:
     """
     Function to add two numbers and return the result
@@ -8,5 +12,5 @@ def add(a: float, b: float) -> float:
 
 
 if __name__ == "__main__":
-    result_add = add(10.0, 5.0)
-    print(result_add)
+    RESULT_ADD = add(10.0, 5.0)
+    print(RESULT_ADD)
